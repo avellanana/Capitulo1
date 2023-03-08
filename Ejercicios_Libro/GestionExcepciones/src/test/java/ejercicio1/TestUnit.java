@@ -1,5 +1,8 @@
 package ejercicio1;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 import proyectoPrueba.ExcepcionBlanco;
@@ -8,22 +11,15 @@ import proyectoPrueba.ExcepcionSalida;
 import proyectoPrueba.ExcepcionVocal;
 
 public class TestUnit {
-
-	LeerPorTeclado leer1 = new LeerPorTeclado();
 			
 	@Test
 	void testSingleSuccessTest() {
-		
-		try{
-			leer1.devolverValor();
+		assertEquals(5, 2+2, "El metodo suma está mal");
+		LeerPorTeclado teclado = new LeerPorTeclado();
+	try{
+		teclado.processChar('a');
+		assertTrue(false);
 		} catch (ExcepcionVocal e) {
-			System.out.println(e.getMessage());
-		} catch (ExcepcionBlanco e) {
-			System.out.println(e.getMessage());
-		} catch (ExcepcionNumero e) {
-			System.out.println(e.getMessage());
-		} catch (ExcepcionSalida e) {
-			System.out.println(e.getMessage());
-	}
-}
+			assertTrue(e.getMessage().contains("Excepcion de vocal"));
+		}
 }
